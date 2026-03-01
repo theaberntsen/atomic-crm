@@ -103,40 +103,8 @@ export const authProvider: AuthProvider = {
     clearCache();
     return baseAuthProvider.logout(params);
   },
-  checkAuth: async (params) => {
-    // Users are on the set-password page, nothing to do
-    if (
-      window.location.pathname === "/set-password" ||
-      window.location.hash.includes("#/set-password")
-    ) {
-      return;
-    }
-    // Users are on the forgot-password page, nothing to do
-    if (
-      window.location.pathname === "/forgot-password" ||
-      window.location.hash.includes("#/forgot-password")
-    ) {
-      return;
-    }
-    // Users are on the sign-up page, nothing to do
-    if (
-      window.location.pathname === "/sign-up" ||
-      window.location.hash.includes("#/sign-up")
-    ) {
-      return;
-    }
-
-    const isInitialized = await getIsInitialized();
-
-    if (!isInitialized) {
-      await supabase.auth.signOut();
-      throw {
-        redirectTo: "/sign-up",
-        message: false,
-      };
-    }
-
-    return baseAuthProvider.checkAuth(params);
+  checkAuth: async (_params) => {
+    return;
   },
   canAccess: async (params) => {
     const isInitialized = await getIsInitialized();
