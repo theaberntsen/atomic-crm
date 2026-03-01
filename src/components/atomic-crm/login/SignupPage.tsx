@@ -27,8 +27,10 @@ export const SignupPage = () => {
   const { data: isInitialized, isPending } = useQuery({
     queryKey: ["init"],
     queryFn: async () => {
+      localStorage.removeItem("RaStore.auth.is_initialized");
       return dataProvider.isInitialized();
     },
+    staleTime: 0,
   });
 
   const { isPending: isSignUpPending, mutate } = useMutation({
