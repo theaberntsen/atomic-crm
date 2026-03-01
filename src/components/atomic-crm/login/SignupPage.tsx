@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { useDataProvider, useLogin, useNotify } from "ra-core";
 import { useForm, type SubmitHandler } from "react-hook-form";
-import { Navigate, useNavigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -167,6 +167,12 @@ export const SignupPage = () => {
                   Sign in with Google Workplace
                 </SSOAuthButton>
               ) : null}
+              <Link
+                to="/login"
+                className="text-sm text-center hover:underline"
+              >
+                Already have an account? Sign in
+              </Link>
             </div>
           </form>
         </div>
